@@ -1,8 +1,10 @@
 package signers;
 
+import body.doc.DocFromPdf;
 import body.doc.DocResponse;
 import body.signer.Signer;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 import java.io.IOException;
 import java.net.URI;
@@ -19,6 +21,23 @@ public class SignerRequest {
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        return mapper.readValue(response.body(), Signer.class);
+    }
+
+    public Signer updateSigner(String apiToken, String signerToken, Signer signer) throws IOException, InterruptedException {
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonDoc = ow.writeValueAsString(signer);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(this.apiRoute+"signers/"+signerToken+"/?api_token="+apiToken))
+                .header("Content-Type", "application/json")
+                .method("POST", HttpRequest.BodyPublishers.ofString("{\n\t\"name\":\"New Signer Name\"\n}"))
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+
         return mapper.readValue(response.body(), Signer.class);
     }
 }
