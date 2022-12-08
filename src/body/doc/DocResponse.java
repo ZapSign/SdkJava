@@ -1,11 +1,12 @@
 package body.doc;
 
+import body.Answers;
 import body.CreateBy;
 import body.Template;
 
 import java.util.ArrayList;
 
-public class DocResponse extends Doc {
+public class DocResponse extends DocWithSigner {
     private int open_id;
     private String token;
     private String status;
@@ -19,7 +20,7 @@ public class DocResponse extends Doc {
     private String last_update_at;
     private CreateBy created_by;
     private Template template;
-    private ArrayList<String> answers;
+    private ArrayList<Answers> answers;
     private int auto_reminder;
 
     public DocResponse() {
@@ -130,11 +131,11 @@ public class DocResponse extends Doc {
         this.template = template;
     }
 
-    public ArrayList<String> getAnswers() {
+    public ArrayList<Answers> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(ArrayList<String> answers) {
+    public void setAnswers(ArrayList<Answers> answers) {
         this.answers = answers;
     }
 

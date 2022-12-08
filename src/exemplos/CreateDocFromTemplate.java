@@ -17,13 +17,6 @@ public class CreateDocFromTemplate {
     public static void main(String[] args) throws IOException, InterruptedException  {
         String apiToken = "0a4d6893-f431-4d83-af80-98097029293730b9ddcf-3e60-4b8a-bb4d-5b68448e4038";
 
-        Signer signer1 = Signer.builder()
-                .name("My First Signer")
-                .build();
-
-        ArrayList<Signer> signers = new ArrayList<>();
-        signers.add(signer1);
-
         DeParaTemplate deParaTemplateName = DeParaTemplate.deParaTemplateBuilder()
                 .de("{{NOME COMPLETO}}")
                 .para("Full Name")
@@ -49,7 +42,7 @@ public class CreateDocFromTemplate {
                 .name("My Contract")
                 .brand_primary_color("#000000")
                 .lang("pt-br")
-                .signers(signers)
+                .signer_name("My Signer for template")
                 .template_id("75a3a92b-36d5-451f-95cd-5af9a927a392")
                 .data(deParaTemplates)
                 .build();

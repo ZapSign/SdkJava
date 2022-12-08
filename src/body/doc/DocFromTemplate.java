@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 
 public class DocFromTemplate extends Doc {
+    private String signer_name;
     private String template_id;
     private List<DeParaTemplate> data;
 
@@ -27,13 +28,22 @@ public class DocFromTemplate extends Doc {
             boolean signature_order_active,
             ArrayList<String> observers,
             int reminder_every_n_days,
-            List<Signer> signers,
+            String signer_name,
             String template_id,
             List<DeParaTemplate> data
     ) {
-        super(sandbox, name, lang, disable_signer_emails, signed_file_only_finished, brand_logo, brand_primary_color, brand_name, external_id, folder_path, date_limit_to_sign, signature_order_active, observers, reminder_every_n_days, signers);
+        super(sandbox, name, lang, disable_signer_emails, signed_file_only_finished, brand_logo, brand_primary_color, brand_name, external_id, folder_path, date_limit_to_sign, signature_order_active, observers, reminder_every_n_days);
+        this.signer_name = signer_name;
         this.template_id = template_id;
         this.data = data;
+    }
+
+    public String getSigner_name() {
+        return signer_name;
+    }
+
+    public void setSigner_name(String signer_name) {
+        this.signer_name = signer_name;
     }
 
     public String getTemplate_id() {

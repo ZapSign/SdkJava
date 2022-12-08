@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DocFromPdf extends Doc {
+public class DocFromPdf extends DocWithSigner {
     private String url_pdf;
 
     @Builder(builderMethodName = "docFromPdfBuilder")
