@@ -93,6 +93,22 @@ public class DocRequests {
         return mapper.readValue(response.body(), DocAsyncResponse.class);
     }
 
+    public ExtraDocResponse addExtraDoc(String apiToken, String docToken, ExtraDoc extraDoc) throws IOException, InterruptedException {
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonDoc = ow.writeValueAsString(extraDoc);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(this.apiRoute+"docs/"+docToken+"/upload-extra-doc/?api_token="+apiToken))
+                .header("Content-Type", "application/json")
+                .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+        return mapper.readValue(response.body(), ExtraDocResponse.class);
+    }
+
     public DocsResponse getDocs(String apiToken) throws IOException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
 
