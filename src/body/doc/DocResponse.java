@@ -13,7 +13,7 @@ public class DocResponse extends DocWithSigner {
     private String original_file;
     private String signed_file;
     private String created_through;
-    private ArrayList<Doc> extra_docs;
+    private ArrayList<ExtraDocResponse> extra_docs;
     private boolean deleted;
     private String deleted_at;
     private String created_at;
@@ -75,11 +75,11 @@ public class DocResponse extends DocWithSigner {
         this.created_through = created_through;
     }
 
-    public ArrayList<Doc> getExtra_docs() {
+    public ArrayList<ExtraDocResponse> getExtra_docs() {
         return extra_docs;
     }
 
-    public void setExtra_docs(ArrayList<Doc> extra_docs) {
+    public void setExtra_docs(ArrayList<ExtraDocResponse> extra_docs) {
         this.extra_docs = extra_docs;
     }
 

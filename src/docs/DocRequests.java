@@ -109,6 +109,18 @@ public class DocRequests {
         return mapper.readValue(response.body(), ExtraDocResponse.class);
     }
 
+    public DocResponse detailDoc(String apiToken, String docToken) throws IOException, InterruptedException {
+        ObjectMapper mapper = new ObjectMapper();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(this.apiRoute+"docs/"+docToken+"/?api_token="+apiToken))
+                .method("GET", HttpRequest.BodyPublishers.noBody())
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+
+        return mapper.readValue(response.body(), DocResponse.class);
+    }
+
     public DocsResponse getDocs(String apiToken) throws IOException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
 
