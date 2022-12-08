@@ -1,4 +1,4 @@
-package exemplos;
+package exemplos.docs;
 
 
 import body.doc.DocFromPdf;
