@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class DocRequests {
-    public static DocResponse createDocFromUploadPdf(String apiToken, DocFromPdf doc) throws IOException, InterruptedException {
+    public DocResponse createDocFromUploadPdf(String apiToken, DocFromPdf doc) throws IOException, InterruptedException {
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         ObjectMapper mapper = new ObjectMapper();
@@ -28,7 +28,7 @@ public class DocRequests {
         return mapper.readValue(response.body(), DocResponse.class);
     }
 
-    public static DocResponse createDocFromUploadDocx(String apiToken, DocFromDocx doc) throws IOException, InterruptedException {
+    public DocResponse createDocFromUploadDocx(String apiToken, DocFromDocx doc) throws IOException, InterruptedException {
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         ObjectMapper mapper = new ObjectMapper();
@@ -40,12 +40,11 @@ public class DocRequests {
                 .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
 
         return mapper.readValue(response.body(), DocResponse.class);
     }
 
-    public static DocsResponse getDocs(String apiToken) throws IOException, InterruptedException {
+    public DocsResponse getDocs(String apiToken) throws IOException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
 
         HttpRequest request = HttpRequest.newBuilder()

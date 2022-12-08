@@ -7,12 +7,10 @@ import body.doc.DocResponse;
 import body.signer.Signer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import docs.DocRequests;
 
 import java.io.IOException;
 import java.util.ArrayList;
-
-import static docs.DocRequests.createDocFromUploadDocx;
-import static docs.DocRequests.createDocFromUploadPdf;
 
 public class CreateDocFromUploadDocx {
     public static void main(String[] args) throws IOException, InterruptedException  {
@@ -47,7 +45,7 @@ public class CreateDocFromUploadDocx {
                 .url_docx("https://zapsign.s3.amazonaws.com/2022/1/docs/d7660fd2-fe74-4691-bec8-5c42c0ae2b3f/39a35070-8987-476d-86e3-75d91f588a5a.docx")
                 .build();
 
-        DocResponse docResponse = createDocFromUploadDocx(apiToken, docFromDocx);
+        DocResponse docResponse = new DocRequests().createDocFromUploadDocx(apiToken, docFromDocx);
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         String jsonDocResponse = ow.writeValueAsString(docResponse);

@@ -40,16 +40,4 @@ public class DocFromPdf extends Doc {
     public void setUrl_pdf(String url_pdf) {
         this.url_pdf = url_pdf;
     }
-
-//    public static class DocFromPdfBuilder extends DocBuilder {
-//        private String url_pdf = "";
-//        public DocFromPdfBuilder setUrl_pdf(String url_pdf) {
-//            this.url_pdf = url_pdf;
-//            return this;
-//        }
-//        @Override
-//        public DocFromPdf build() {
-//            return new DocFromPdf(this);
-//        }
-//    }
 }
