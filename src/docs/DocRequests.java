@@ -133,4 +133,17 @@ public class DocRequests {
 
         return mapper.readValue(response.body(), DocsResponse.class);
     }
+
+    public DocResponse deleteDoc(String apiToken, String docToken) throws IOException, InterruptedException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(this.apiRoute+"docs/"+docToken+"/?api_token="+apiToken))
+                .method("DELETE", HttpRequest.BodyPublishers.noBody())
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+
+        return mapper.readValue(response.body(), DocResponse.class);
+    }
 }
