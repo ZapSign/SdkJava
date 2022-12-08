@@ -61,6 +61,22 @@ public class DocRequests {
         return mapper.readValue(response.body(), DocAsyncResponse.class);
     }
 
+    public DocResponse createDocFromTemplate(String apiToken, DocFromTemplate doc) throws IOException, InterruptedException {
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonDoc = ow.writeValueAsString(doc);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(this.apiRoute+"models/create-doc/?api_token="+apiToken))
+                .header("Content-Type", "application/json")
+                .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+        return mapper.readValue(response.body(), DocResponse.class);
+    }
+
     public DocsResponse getDocs(String apiToken) throws IOException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
 

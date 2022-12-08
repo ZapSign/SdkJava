@@ -1,7 +1,7 @@
 package body.doc;
 
 public class DocAsyncResponse {
-    public String token;
+    private String token;
 
     public String getToken() {
         return token;
