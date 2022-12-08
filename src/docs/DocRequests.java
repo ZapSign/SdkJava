@@ -12,6 +12,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class DocRequests {
+    private final String apiRoute = "https://api.zapsign.com.br/api/v1/";
     public DocResponse createDocFromUploadPdf(String apiToken, DocFromPdf doc) throws IOException, InterruptedException {
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
@@ -19,7 +20,7 @@ public class DocRequests {
         String jsonDoc = ow.writeValueAsString(doc);
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api.zapsign.com.br/api/v1/docs/?api_token="+apiToken))
+                .uri(URI.create(this.apiRoute+"docs/?api_token="+apiToken))
                 .header("Content-Type", "application/json")
                 .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
                 .build();
@@ -35,7 +36,7 @@ public class DocRequests {
         String jsonDoc = ow.writeValueAsString(doc);
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api.zapsign.com.br/api/v1/docs/?api_token="+apiToken))
+                .uri(URI.create(this.apiRoute+"docs/?api_token="+apiToken))
                 .header("Content-Type", "application/json")
                 .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
                 .build();
@@ -44,11 +45,27 @@ public class DocRequests {
         return mapper.readValue(response.body(), DocResponse.class);
     }
 
+    public DocAsyncResponse createDocFromUploadAsync(String apiToken, DocFromPdf doc) throws IOException, InterruptedException {
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonDoc = ow.writeValueAsString(doc);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(this.apiRoute+"docs/async/?api_token="+apiToken))
+                .header("Content-Type", "application/json")
+                .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+        return mapper.readValue(response.body(), DocAsyncResponse.class);
+    }
+
     public DocsResponse getDocs(String apiToken) throws IOException, InterruptedException {
         ObjectMapper mapper = new ObjectMapper();
 
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://api.zapsign.com.br/api/v1/docs/?api_token="+apiToken))
+                .uri(URI.create(this.apiRoute+"docs/?api_token="+apiToken))
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
