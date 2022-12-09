@@ -146,4 +146,20 @@ public class DocRequests {
 
         return mapper.readValue(response.body(), DocResponse.class);
     }
+
+    public int placeSignatures(String apiToken, String docToken, Rubricas rubricas) throws IOException, InterruptedException {
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonDoc = ow.writeValueAsString(rubricas);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(this.apiRoute+"docs/"+docToken+"/place-signatures/?api_token="+apiToken))
+                .header("Content-Type", "application/json")
+                .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.statusCode();
+    }
 }
