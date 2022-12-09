@@ -15,10 +15,12 @@ public class DocRequests {
     private final String apiRoute = "https://api.zapsign.com.br/api/v1/";
     public DocResponse createDocFromUploadPdf(String apiToken, DocFromPdf doc) throws IOException, InterruptedException {
 
+        // Todo: Isolar essa parte de json em uma função
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
         ObjectMapper mapper = new ObjectMapper();
         String jsonDoc = ow.writeValueAsString(doc);
 
+        // Todo: Transformar essa requisição em uma factory
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(this.apiRoute+"docs/?api_token="+apiToken))
                 .header("Content-Type", "application/json")
@@ -147,11 +149,10 @@ public class DocRequests {
         return mapper.readValue(response.body(), DocResponse.class);
     }
 
-    public int placeSignatures(String apiToken, String docToken, Rubricas rubricas) throws IOException, InterruptedException {
+    public int placeSignatures(String apiToken, String docToken, RubricaList rubricaList) throws IOException, InterruptedException {
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        ObjectMapper mapper = new ObjectMapper();
-        String jsonDoc = ow.writeValueAsString(rubricas);
+        String jsonDoc = ow.writeValueAsString(rubricaList);
 
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(this.apiRoute+"docs/"+docToken+"/place-signatures/?api_token="+apiToken))

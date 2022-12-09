@@ -1,12 +1,8 @@
 package exemplos.docs;
 
 
-import body.doc.ExtraDoc;
-import body.doc.ExtraDocResponse;
 import body.doc.Rubrica;
-import body.doc.Rubricas;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import body.doc.RubricaList;
 import docs.DocRequests;
 
 import java.io.IOException;
@@ -42,11 +38,11 @@ public class PlaceSignatures {
         _rubricas.add(rubrica1);
         _rubricas.add(rubrica2);
 
-        Rubricas rubricas = Rubricas.builder()
+        RubricaList rubricaList = RubricaList.builder()
                 .rubricas(_rubricas)
                 .build();
 
-        int statusCode = new DocRequests().placeSignatures(apiToken, docToken, rubricas);
+        int statusCode = new DocRequests().placeSignatures(apiToken, docToken, rubricaList);
 
         System.out.println(statusCode);
     }

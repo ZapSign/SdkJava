@@ -4,11 +4,11 @@ import lombok.Builder;
 
 import java.util.List;
 
-public class Rubricas {
+public class RubricaList {
     private List<Rubrica> rubricas;
 
     @Builder
-    public Rubricas(List<Rubrica> rubricas) {
+    public RubricaList(List<Rubrica> rubricas) {
         this.rubricas = rubricas;
     }
 
