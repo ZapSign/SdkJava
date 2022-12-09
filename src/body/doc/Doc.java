@@ -21,7 +21,6 @@ public class Doc {
     private boolean signature_order_active;
     private ArrayList<String> observers;
     private int reminder_every_n_days;
-    private List<Signer> signers;
 
     public Doc() {
         this.sandbox = false;
@@ -37,7 +36,6 @@ public class Doc {
         this.date_limit_to_sign = null;
         this.signature_order_active = false;
         this.observers = new ArrayList<String>();
-        this.signers = List.of();
     }
 
     @Builder(builderMethodName = "docBuilder")
@@ -55,8 +53,7 @@ public class Doc {
             Date date_limit_to_sign,
             boolean signature_order_active,
             ArrayList<String> observers,
-            int reminder_every_n_days,
-            List<Signer> signers
+            int reminder_every_n_days
     ) {
         this.sandbox = sandbox;
         this.name = name;
@@ -72,7 +69,6 @@ public class Doc {
         this.signature_order_active = signature_order_active;
         this.observers = observers;
         this.reminder_every_n_days = reminder_every_n_days;
-        this.signers = signers;
     }
 
     public boolean isSandbox() {
@@ -185,17 +181,5 @@ public class Doc {
 
     public void setReminder_every_n_days(int reminder_every_n_days) {
         this.reminder_every_n_days = reminder_every_n_days;
-    }
-
-    public List<Signer> getSigners() {
-        return signers;
-    }
-
-    public void setSigners(List<Signer> signers) {
-        this.signers = signers;
-    }
-
-    public void addSigner(Signer signer) {
-        this.signers.add(signer);
     }
 }
