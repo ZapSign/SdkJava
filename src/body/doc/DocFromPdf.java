@@ -2,13 +2,12 @@ package body.doc;
 
 import body.signer.Signer;
 import lombok.Builder;
-import lombok.Singular;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DocFromPdf extends DocWithSigner {
+public class DocFromPdf extends Doc {
     private String url_pdf;
 
     @Builder(builderMethodName = "docFromPdfBuilder")

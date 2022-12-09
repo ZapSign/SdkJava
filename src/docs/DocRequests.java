@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 
 public class DocRequests {
     private final String apiRoute = "https://api.zapsign.com.br/api/v1/";
-    public DocResponse createDocFromUploadPdf(String apiToken, DocFromPdf doc) throws IOException, InterruptedException {
+    public DocResponse createDocFromUploadPdf(String apiToken, DocFromPdf doc) throws Exception {
 
         // Todo: Isolar essa parte de json em uma função
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
@@ -27,6 +27,9 @@ public class DocRequests {
                 .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        if(response.statusCode() != 200) {
+            throw new Exception(response.statusCode() + " - error: " + response.body());
+        }
 
         return mapper.readValue(response.body(), DocResponse.class);
     }

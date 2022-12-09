@@ -38,6 +38,16 @@ public class DocFromTemplate extends Doc {
         this.data = data;
     }
 
+    @Override
+    public List<Signer> getSigners() {
+        return null;
+    }
+
+    @Override
+    public void setSigners(List<Signer> signers) throws Exception {
+        throw new Exception("you can not set signers in DocFromTemplate, try setSigner_name");
+    }
+
     public String getSigner_name() {
         return signer_name;
     }

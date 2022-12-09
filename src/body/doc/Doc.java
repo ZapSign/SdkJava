@@ -20,6 +20,7 @@ public class Doc {
     private Date date_limit_to_sign;
     private boolean signature_order_active;
     private ArrayList<String> observers;
+    private List<Signer> signers;
     private int reminder_every_n_days;
 
     public Doc() {
@@ -35,6 +36,7 @@ public class Doc {
         this.folder_path = "/";
         this.date_limit_to_sign = null;
         this.signature_order_active = false;
+        this.signers = new ArrayList<Signer>();
         this.observers = new ArrayList<String>();
     }
 
@@ -69,6 +71,41 @@ public class Doc {
         this.signature_order_active = signature_order_active;
         this.observers = observers;
         this.reminder_every_n_days = reminder_every_n_days;
+    }
+
+    @Builder(builderMethodName = "docWithSignerBuilder")
+    public Doc(
+            boolean sandbox,
+            String name,
+            String lang,
+            boolean disable_signer_emails,
+            boolean signed_file_only_finished,
+            String brand_logo,
+            String brand_primary_color,
+            String brand_name,
+            String external_id,
+            String folder_path,
+            Date date_limit_to_sign,
+            boolean signature_order_active,
+            ArrayList<String> observers,
+            int reminder_every_n_days,
+            List<Signer> signers
+    ) {
+        this.sandbox = sandbox;
+        this.name = name;
+        this.lang = lang;
+        this.disable_signer_emails = disable_signer_emails;
+        this.signed_file_only_finished = signed_file_only_finished;
+        this.brand_logo = brand_logo;
+        this.brand_primary_color = brand_primary_color;
+        this.brand_name = brand_name;
+        this.external_id = external_id;
+        this.folder_path = folder_path;
+        this.date_limit_to_sign = date_limit_to_sign;
+        this.signature_order_active = signature_order_active;
+        this.observers = observers;
+        this.reminder_every_n_days = reminder_every_n_days;
+        this.signers = signers;
     }
 
     public boolean isSandbox() {
@@ -181,5 +218,13 @@ public class Doc {
 
     public void setReminder_every_n_days(int reminder_every_n_days) {
         this.reminder_every_n_days = reminder_every_n_days;
+    }
+
+    public List<Signer> getSigners() throws Exception {
+        return signers;
+    }
+
+    public void setSigners(List<Signer> signers) throws Exception {
+        this.signers = signers;
     }
 }

@@ -6,7 +6,7 @@ import body.Template;
 
 import java.util.ArrayList;
 
-public class DocResponse extends DocWithSigner {
+public class DocResponse extends Doc {
     private int open_id;
     private String token;
     private String status;
