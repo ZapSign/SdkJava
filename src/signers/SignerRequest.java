@@ -36,7 +36,7 @@ public class SignerRequest {
                 .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
+
 
         return mapper.readValue(response.body(), Signer.class);
     }
@@ -53,8 +53,21 @@ public class SignerRequest {
                 .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-        System.out.println(response.body());
+
 
         return mapper.readValue(response.body(), Signer.class);
+    }
+
+    public String deleteSigner(String apiToken, String docToken) throws IOException, InterruptedException {
+        ObjectMapper mapper = new ObjectMapper();
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(this.apiRoute+"signer/"+docToken+"/remove/?api_token="+apiToken))
+                .header("Content-Type", "application/json")
+                .method("DELETE", HttpRequest.BodyPublishers.noBody())
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+
+        return response.body();
     }
 }
