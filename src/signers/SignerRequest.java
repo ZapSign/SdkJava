@@ -33,7 +33,24 @@ public class SignerRequest {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(this.apiRoute+"signers/"+signerToken+"/?api_token="+apiToken))
                 .header("Content-Type", "application/json")
-                .method("POST", HttpRequest.BodyPublishers.ofString("{\n\t\"name\":\"New Signer Name\"\n}"))
+                .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
+                .build();
+        HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
+        System.out.println(response.body());
+
+        return mapper.readValue(response.body(), Signer.class);
+    }
+
+    public Signer addSigner(String apiToken, String docToken, Signer signer) throws IOException, InterruptedException {
+
+        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonDoc = ow.writeValueAsString(signer);
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(this.apiRoute+"docs/"+docToken+"/add-signer/?api_token="+apiToken))
+                .header("Content-Type", "application/json")
+                .method("POST", HttpRequest.BodyPublishers.ofString(jsonDoc))
                 .build();
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         System.out.println(response.body());
