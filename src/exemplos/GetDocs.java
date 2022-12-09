@@ -1,22 +1,20 @@
-package exemplos.signer;
+package exemplos;
 
-import body.doc.DocResponse;
-import body.signer.Signer;
+import body.doc.DocsResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
-import docs.DocRequests;
-import signers.SignerRequest;
 
 import java.io.IOException;
 
-public class DetailSigner {
+import static docs.DocRequests.getDocs;
+
+public class GetDocs {
     public static void main(String[] args) throws IOException, InterruptedException {
         String apiToken = "0a4d6893-f431-4d83-af80-98097029293730b9ddcf-3e60-4b8a-bb4d-5b68448e4038";
-        String signerToken = "cdfeee06-4e68-4a10-9d68-4ab3a516b112";
-        Signer signer = new SignerRequest().detailSigner(apiToken, signerToken);
+        DocsResponse docsResponse = getDocs(apiToken);
 
         ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String jsonDocResponse = ow.writeValueAsString(signer);
+        String jsonDocResponse = ow.writeValueAsString(docsResponse);
         System.out.println(jsonDocResponse);
     }
 }

@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class DocFromDocx extends DocWithSigner {
+public class DocFromDocx extends Doc {
     private String url_docx;
 
     @Builder(builderMethodName = "docFromDocxBuilder")
