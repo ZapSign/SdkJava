@@ -1,25 +1,26 @@
 package body.doc;
 
+import body.Answers;
 import body.CreateBy;
 import body.Template;
 
 import java.util.ArrayList;
 
-public class DocResponse extends Doc {
+public class DocResponse extends DocWithSigner {
     private int open_id;
     private String token;
     private String status;
     private String original_file;
     private String signed_file;
     private String created_through;
-    private ArrayList<Doc> extra_docs;
+    private ArrayList<ExtraDocResponse> extra_docs;
     private boolean deleted;
     private String deleted_at;
     private String created_at;
     private String last_update_at;
     private CreateBy created_by;
     private Template template;
-    private ArrayList<String> answers;
+    private ArrayList<Answers> answers;
     private int auto_reminder;
 
     public DocResponse() {
@@ -74,11 +75,11 @@ public class DocResponse extends Doc {
         this.created_through = created_through;
     }
 
-    public ArrayList<Doc> getExtra_docs() {
+    public ArrayList<ExtraDocResponse> getExtra_docs() {
         return extra_docs;
     }
 
-    public void setExtra_docs(ArrayList<Doc> extra_docs) {
+    public void setExtra_docs(ArrayList<ExtraDocResponse> extra_docs) {
         this.extra_docs = extra_docs;
     }
 
@@ -130,11 +131,11 @@ public class DocResponse extends Doc {
         this.template = template;
     }
 
-    public ArrayList<String> getAnswers() {
+    public ArrayList<Answers> getAnswers() {
         return answers;
     }
 
-    public void setAnswers(ArrayList<String> answers) {
+    public void setAnswers(ArrayList<Answers> answers) {
         this.answers = answers;
     }
 
