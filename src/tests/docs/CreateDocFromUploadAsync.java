@@ -7,6 +7,7 @@ import body.signer.Signer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import docs.DocRequests;
+import services.JsonConverter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,10 +45,13 @@ public class CreateDocFromUploadAsync {
                 .url_pdf("https://zapsign.s3.amazonaws.com/2022/1/pdf/63d19807-cbfa-4b51-8571-215ad0f4eb98/ca42e7be-c932-482c-b70b-92ad7aea04be.pdf")
                 .build();
 
-        DocAsyncResponse docAsyncResponse = new DocRequests().createDocFromUploadAsync(apiToken, docFromPdf);
-
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String jsonDocResponse = ow.writeValueAsString(docAsyncResponse);
-        System.out.println(jsonDocResponse);
+        try {
+            DocAsyncResponse docAsyncResponse = new DocRequests().createDocFromUploadAsync(apiToken, docFromPdf);
+            String jsonDocResponse = new JsonConverter().docAsyncResponseToJson(docAsyncResponse);
+            System.out.println(jsonDocResponse);
+        }
+        catch(Exception exceptionError) {
+            System.out.println(exceptionError.getMessage());
+        }
     }
 }

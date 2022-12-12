@@ -1,23 +1,17 @@
 package tests.signer;
 
 
-import body.doc.DocResponse;
 import body.signer.Signer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import docs.DocRequests;
 import services.JsonConverter;
 import signers.SignerRequest;
 
-import java.io.IOException;
-
-public class UpdateSigner {
+public class AddSigner {
     public static void main(String[] args) throws Exception {
         String apiToken = "0a4d6893-f431-4d83-af80-98097029293730b9ddcf-3e60-4b8a-bb4d-5b68448e4038";
-        String signerToken = "cdfeee06-4e68-4a10-9d68-4ab3a516b112";
+        String docToken = "0ab61bed-fe32-4c46-9ce8-4595a85fdadb";
 
         Signer signer = Signer.builder()
-                .name("New Name")
+                .name("New signer Name")
                 .email("newEmail@test.com")
                 .lock_email(true)
                 .lock_phone(true)
@@ -29,7 +23,7 @@ public class UpdateSigner {
                 .build();
 
         try {
-            Signer signerResponse = new SignerRequest().updateSigner(apiToken, signerToken, signer);
+            Signer signerResponse = new SignerRequest().addSigner(apiToken, docToken, signer);
             String jsonDocResponse = new JsonConverter().signerToJson(signerResponse);
             System.out.println(jsonDocResponse);
         }

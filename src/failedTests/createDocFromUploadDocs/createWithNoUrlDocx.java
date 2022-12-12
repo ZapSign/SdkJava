@@ -1,7 +1,7 @@
-package tests.docs;
-
+package failedTests.createDocFromUploadDocs;
 
 import body.doc.DocFromDocx;
+import body.doc.DocFromPdf;
 import body.doc.DocResponse;
 import body.signer.Signer;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -12,8 +12,8 @@ import services.JsonConverter;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class CreateDocFromUploadDocx {
-    public static void main(String[] args) throws Exception {
+public class createWithNoUrlDocx {
+    public static void main(String[] args) throws IOException, InterruptedException  {
         String apiToken = "0a4d6893-f431-4d83-af80-98097029293730b9ddcf-3e60-4b8a-bb4d-5b68448e4038";
 
         Signer signer1 = Signer.builder()
@@ -36,13 +36,15 @@ public class CreateDocFromUploadDocx {
         signers.add(signer1);
         signers.add(signer2);
 
+
         DocFromDocx docFromDocx = DocFromDocx.docFromDocxBuilder()
                 .sandbox(false)
                 .name("My Contract")
                 .brand_primary_color("#000000")
                 .lang("pt-br")
                 .signers(signers)
-                .url_docx("https://zapsign.s3.amazonaws.com/2022/1/docs/d7660fd2-fe74-4691-bec8-5c42c0ae2b3f/39a35070-8987-476d-86e3-75d91f588a5a.docx")
+//              Test with not url_docx
+//              .url_docx("https://zapsign.s3.amazonaws.com/2022/1/docs/d7660fd2-fe74-4691-bec8-5c42c0ae2b3f/39a35070-8987-476d-86e3-75d91f588a5a.docx")
                 .build();
 
         try {

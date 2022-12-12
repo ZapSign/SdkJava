@@ -1,9 +1,11 @@
 package tests.docs;
 
 
+import body.doc.DocsResponse;
 import body.doc.Rubrica;
 import body.doc.RubricaList;
 import docs.DocRequests;
+import services.JsonConverter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,8 +44,12 @@ public class PlaceSignatures {
                 .rubricas(_rubricas)
                 .build();
 
-        int statusCode = new DocRequests().placeSignatures(apiToken, docToken, rubricaList);
-
-        System.out.println(statusCode);
+        try {
+            int statusCode = new DocRequests().placeSignatures(apiToken, docToken, rubricaList);
+            System.out.println(statusCode);
+        }
+        catch(Exception exceptionError) {
+            System.out.println(exceptionError.getMessage());
+        }
     }
 }

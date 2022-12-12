@@ -7,6 +7,7 @@ import body.doc.DocResponse;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import docs.DocRequests;
+import services.JsonConverter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,10 +45,13 @@ public class CreateDocFromTemplate {
                 .data(deParaTemplates)
                 .build();
 
-        DocResponse docResponse = new DocRequests().createDocFromTemplate(apiToken, docFromTemplate);
-
-        ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-        String jsonDocResponse = ow.writeValueAsString(docResponse);
-        System.out.println(jsonDocResponse);
+        try {
+            DocResponse docResponse = new DocRequests().createDocFromTemplate(apiToken, docFromTemplate);
+            String jsonDocResponse = new JsonConverter().docResponseToJson(docResponse);
+            System.out.println(jsonDocResponse);
+        }
+        catch(Exception exceptionError) {
+            System.out.println(exceptionError.getMessage());
+        }
     }
 }

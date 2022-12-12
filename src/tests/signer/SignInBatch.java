@@ -2,6 +2,8 @@ package tests.signer;
 
 
 import body.signer.SignBatch;
+import body.signer.Signer;
+import services.JsonConverter;
 import signers.SignerRequest;
 
 import java.io.IOException;
@@ -23,8 +25,12 @@ public class SignInBatch {
                 .signer_tokens(signers_token)
                 .build();
 
-        String response = new SignerRequest().signInBatch(apiToken, signBatch);
-
-        System.out.println(response);
+        try {
+            String response = new SignerRequest().signInBatch(apiToken, signBatch);
+            System.out.println(response);
+        }
+        catch(Exception exceptionError) {
+            System.out.println(exceptionError.getMessage());
+        }
     }
 }

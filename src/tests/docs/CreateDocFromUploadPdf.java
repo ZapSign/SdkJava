@@ -7,6 +7,7 @@ import body.signer.Signer;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import docs.DocRequests;
+import services.JsonConverter;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,8 +46,7 @@ public class CreateDocFromUploadPdf {
 
         try {
             DocResponse docResponse = new DocRequests().createDocFromUploadPdf(apiToken, docFromPdf);
-            ObjectWriter ow = new ObjectMapper().writer().withDefaultPrettyPrinter();
-            String jsonDocResponse = ow.writeValueAsString(docResponse);
+            String jsonDocResponse = new JsonConverter().docResponseToJson(docResponse);
             System.out.println(jsonDocResponse);
         }
         catch(Exception exceptionError) {

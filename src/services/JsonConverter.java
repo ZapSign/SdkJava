@@ -10,6 +10,23 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 public class JsonConverter {
     ObjectWriter objecWriter = new ObjectMapper().writer().withDefaultPrettyPrinter();
     ObjectMapper mapper = new ObjectMapper();
+
+    public String docResponseToJson(DocResponse docResponse) throws JsonProcessingException {
+        return objecWriter.writeValueAsString(docResponse);
+    }
+
+    public String docsResponseToJson(DocsResponse docsResponse) throws JsonProcessingException {
+        return objecWriter.writeValueAsString(docsResponse);
+    }
+
+    public String docAsyncResponseToJson(DocAsyncResponse docAsyncResponse) throws JsonProcessingException {
+        return objecWriter.writeValueAsString(docAsyncResponse);
+    }
+
+    public String extraDocToJson(ExtraDocResponse extraDocResponse) throws JsonProcessingException {
+        return objecWriter.writeValueAsString(extraDocResponse);
+    }
+
     public String docFromPdfToJson(DocFromPdf docFromPdf) throws JsonProcessingException {
         return objecWriter.writeValueAsString(docFromPdf);
     }
