@@ -43,7 +43,7 @@ public class CreateDocFromUploadDocx {
                 .build();
 
         try {
-            DocResponse docResponse = new DocRequests().createDocFromUploadDocx(apiToken, docFromDocx);
+            DocResponse docResponse = new DocRequests(apiToken).createDocFromUploadDocx(docFromDocx);
             String jsonDocResponse = new JsonConverter().docResponseToJson(docResponse);
             System.out.println(jsonDocResponse);
         }

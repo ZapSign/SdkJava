@@ -43,7 +43,7 @@ public class PlaceSignaturesWithWrongToken {
                 .build();
 
         try {
-            int statusCode = new DocRequests().placeSignatures(apiToken, docToken, rubricaList);
+            int statusCode = new DocRequests(apiToken).placeSignatures(docToken, rubricaList);
             System.out.println(statusCode);
         }
         catch(Exception exceptionError) {

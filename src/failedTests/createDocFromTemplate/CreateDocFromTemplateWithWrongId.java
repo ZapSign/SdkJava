@@ -44,7 +44,7 @@ public class CreateDocFromTemplateWithWrongId {
                 .build();
 
         try {
-            DocResponse docResponse = new DocRequests().createDocFromTemplate(apiToken, docFromTemplate);
+            DocResponse docResponse = new DocRequests(apiToken).createDocFromTemplate(docFromTemplate);
             String jsonDocResponse = new JsonConverter().docResponseToJson(docResponse);
             System.out.println(jsonDocResponse);
         }

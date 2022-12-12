@@ -44,7 +44,7 @@ public class createWithNoUrlPdf {
                 .build();
 
         try {
-            DocResponse docResponse = new DocRequests().createDocFromUploadPdf(apiToken, docFromPdf);
+            DocResponse docResponse = new DocRequests(apiToken).createDocFromUploadPdf(docFromPdf);
             String jsonDocResponse = new JsonConverter().docResponseToJson(docResponse);
             System.out.println(jsonDocResponse);
         }

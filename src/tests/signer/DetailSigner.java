@@ -14,7 +14,7 @@ public class DetailSigner {
         String signerToken = "cdfeee06-4e68-4a10-9d68-4ab3a516b112";
 
         try {
-            Signer signer = new SignerRequest().detailSigner(apiToken, signerToken);
+            Signer signer = new SignerRequest(apiToken).detailSigner(signerToken);
             String jsonDocResponse = new JsonConverter().signerToJson(signer);
             System.out.println(jsonDocResponse);
         }

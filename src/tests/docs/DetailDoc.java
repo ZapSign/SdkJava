@@ -10,7 +10,7 @@ public class DetailDoc {
         String docToken = "8245d99d-e838-4e82-b6f5-387a77435756";
 
         try {
-            DocResponse docResponse = new DocRequests().detailDoc(apiToken, docToken);
+            DocResponse docResponse = new DocRequests(apiToken).detailDoc(docToken);
 
             String jsonDocResponse = new JsonConverter().docResponseToJson(docResponse);
             System.out.println(jsonDocResponse);

@@ -9,7 +9,7 @@ public class DeleteSignerWithWrongToken {
         String signerToken = "6125d01f-b7d5-4b7c-9a26-test";
 
         try {
-            String response = new SignerRequest().deleteSigner(apiToken, signerToken);
+            String response = new SignerRequest(apiToken).deleteSigner(signerToken);
             System.out.println(response);
         }
         catch(Exception exceptionError) {

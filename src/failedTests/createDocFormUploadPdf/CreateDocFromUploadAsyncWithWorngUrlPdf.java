@@ -44,7 +44,7 @@ public class CreateDocFromUploadAsyncWithWorngUrlPdf {
                 .build();
 
         try {
-            DocAsyncResponse docAsyncResponse = new DocRequests().createDocFromUploadAsync(apiToken, docFromPdf);
+            DocAsyncResponse docAsyncResponse = new DocRequests(apiToken).createDocFromUploadAsync(docFromPdf);
             String jsonDocResponse = new JsonConverter().docAsyncResponseToJson(docAsyncResponse);
             System.out.println(jsonDocResponse);
         }

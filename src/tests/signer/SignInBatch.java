@@ -26,7 +26,7 @@ public class SignInBatch {
                 .build();
 
         try {
-            String response = new SignerRequest().signInBatch(apiToken, signBatch);
+            String response = new SignerRequest(apiToken).signInBatch(signBatch);
             System.out.println(response);
         }
         catch(Exception exceptionError) {

@@ -18,7 +18,7 @@ public class AddExtraDoc {
                 .build();
 
         try {
-            ExtraDocResponse extraDocResponse = new DocRequests().addExtraDoc(apiToken, docToken, extraDoc);
+            ExtraDocResponse extraDocResponse = new DocRequests(apiToken).addExtraDoc(docToken, extraDoc);
             String jsonExtraDocs = new JsonConverter().extraDocToJson(extraDocResponse);
             System.out.println(jsonExtraDocs);
         }

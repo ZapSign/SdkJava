@@ -24,7 +24,7 @@ public class AddSignerWithWrongToken {
                 .build();
 
         try {
-            Signer signerResponse = new SignerRequest().addSigner(apiToken, docToken, signer);
+            Signer signerResponse = new SignerRequest(apiToken).addSigner(docToken, signer);
             String jsonDocResponse = new JsonConverter().signerToJson(signerResponse);
             System.out.println(jsonDocResponse);
         }

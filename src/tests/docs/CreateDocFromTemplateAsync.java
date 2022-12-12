@@ -43,7 +43,7 @@ public class CreateDocFromTemplateAsync {
                 .build();
 
         try {
-            DocAsyncResponse docAsyncResponse = new DocRequests().createDocFromTemplateAsync(apiToken, docFromTemplate);
+            DocAsyncResponse docAsyncResponse = new DocRequests(apiToken).createDocFromTemplateAsync(docFromTemplate);
             String jsonDocResponse = new JsonConverter().docAsyncResponseToJson(docAsyncResponse);
             System.out.println(jsonDocResponse);
         }

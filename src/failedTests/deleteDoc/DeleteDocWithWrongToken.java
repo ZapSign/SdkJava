@@ -11,7 +11,7 @@ public class DeleteDocWithWrongToken {
         String docToken = "78248cee-f143-4b4f-983f-test";
 
         try {
-            DocResponse docResponse = new DocRequests().deleteDoc(apiToken, docToken);
+            DocResponse docResponse = new DocRequests(apiToken).deleteDoc(docToken);
 
             String jsonDocResponse = new JsonConverter().docResponseToJson(docResponse);
             System.out.println(jsonDocResponse);
