@@ -1,15 +1,9 @@
 package tests.signer;
 
 
-import body.doc.DocResponse;
 import body.signer.Signer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
-import docs.DocRequests;
 import services.JsonConverter;
 import signers.SignerRequest;
-
-import java.io.IOException;
 
 public class UpdateSigner {
     public static void main(String[] args) throws Exception {

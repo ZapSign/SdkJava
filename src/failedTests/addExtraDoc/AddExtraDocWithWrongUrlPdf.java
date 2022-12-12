@@ -2,7 +2,7 @@ package failedTests.addExtraDoc;
 
 
 import body.doc.ExtraDoc;
-import body.doc.ExtraDocResponse;
+import response.ExtraDocResponse;
 import docs.DocRequests;
 import services.JsonConverter;
 

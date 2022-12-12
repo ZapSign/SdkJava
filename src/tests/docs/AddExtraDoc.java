@@ -1,15 +1,10 @@
 package tests.docs;
 
 
-import body.doc.DocResponse;
 import body.doc.ExtraDoc;
-import body.doc.ExtraDocResponse;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import response.ExtraDocResponse;
 import docs.DocRequests;
 import services.JsonConverter;
-
-import java.io.IOException;
 
 public class AddExtraDoc {
     public static void main(String[] args) throws Exception {

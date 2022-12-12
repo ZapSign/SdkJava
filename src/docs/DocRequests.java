@@ -4,6 +4,10 @@ import body.doc.*;
 
 import java.net.http.HttpResponse;
 
+import response.DocAsyncResponse;
+import response.DocResponse;
+import response.DocsResponse;
+import response.ExtraDocResponse;
 import services.HttpRequestFactory;
 import services.JsonConverter;
 

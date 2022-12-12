@@ -1,4 +1,4 @@
-package body.doc;
+package response;
 
 public class ExtraDocResponse {
     private String open_id;

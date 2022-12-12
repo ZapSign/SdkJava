@@ -1,6 +1,6 @@
 package failedTests.getDocs;
 
-import body.doc.DocsResponse;
+import response.DocsResponse;
 import docs.DocRequests;
 import services.JsonConverter;
 

@@ -1,7 +1,7 @@
 package failedTests.createDocFormUploadPdf;
 
 
-import body.doc.DocAsyncResponse;
+import response.DocAsyncResponse;
 import body.doc.DocFromPdf;
 import body.signer.Signer;
 import docs.DocRequests;

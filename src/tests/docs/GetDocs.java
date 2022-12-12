@@ -1,13 +1,8 @@
 package tests.docs;
 
-import body.doc.DocResponse;
-import body.doc.DocsResponse;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
+import response.DocsResponse;
 import docs.DocRequests;
 import services.JsonConverter;
-
-import java.io.IOException;
 
 public class GetDocs {
     public static void main(String[] args) throws Exception {

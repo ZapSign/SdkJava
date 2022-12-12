@@ -2,14 +2,11 @@ package tests.docs;
 
 
 import body.doc.DocFromDocx;
-import body.doc.DocResponse;
+import response.DocResponse;
 import body.signer.Signer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import docs.DocRequests;
 import services.JsonConverter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class CreateDocFromUploadDocx {

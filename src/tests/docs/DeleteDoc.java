@@ -1,6 +1,6 @@
 package tests.docs;
 
-import body.doc.DocResponse;
+import response.DocResponse;
 import docs.DocRequests;
 import services.JsonConverter;
 

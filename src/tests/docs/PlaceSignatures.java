@@ -1,13 +1,10 @@
 package tests.docs;
 
 
-import body.doc.DocsResponse;
 import body.doc.Rubrica;
 import body.doc.RubricaList;
 import docs.DocRequests;
-import services.JsonConverter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class PlaceSignatures {

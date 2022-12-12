@@ -1,4 +1,4 @@
-package body.doc;
+package response;
 
 public class DocAsyncResponse {
     private String token;

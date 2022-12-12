@@ -2,7 +2,7 @@ package failedTests.createDocFromTemplate;
 
 
 import body.doc.DeParaTemplate;
-import body.doc.DocAsyncResponse;
+import response.DocAsyncResponse;
 import body.doc.DocFromTemplate;
 import docs.DocRequests;
 import services.JsonConverter;

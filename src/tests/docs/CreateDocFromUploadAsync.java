@@ -1,15 +1,12 @@
 package tests.docs;
 
 
-import body.doc.DocAsyncResponse;
+import response.DocAsyncResponse;
 import body.doc.DocFromPdf;
 import body.signer.Signer;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.ObjectWriter;
 import docs.DocRequests;
 import services.JsonConverter;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class CreateDocFromUploadAsync {
